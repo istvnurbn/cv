@@ -84,11 +84,11 @@
 \RequirePackage{parskip}
 % Needed to deal hyperlink
 \RequirePackage[hidelinks,unicode,pdfpagelabels=false]{hyperref}
-\hypersetup{%
-  pdftitle={},
-  pdfauthor={},
-  pdfsubject={},
-  pdfkeywords={}
+\hypersetup{
+  pdftitle={CV},
+  pdfauthor={István Urbán},
+  pdfsubject={Curriculum vitae},
+  pdfkeywords={CV}
 }
 % Solves issues Warning: File `cv.out' has changed
 \RequirePackage{bookmark}

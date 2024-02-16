@@ -13,10 +13,10 @@
 % CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 %
 
-
 %-------------------------------------------------------------------------------
 % CONFIGURATIONS
 %-------------------------------------------------------------------------------
+
 % A4 paper size by default, use 'letterpaper' for US letter
 \documentclass[11pt, a4paper]{awesome-cv}
 
@@ -26,7 +26,7 @@
 % Color for highlights
 % Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
 %                 awesome-nephritis, awesome-concrete, awesome-darknight
-\colorlet{awesome}{awesome-red}
+\colorlet{awesome}{awesome-skyblue}
 % Uncomment if you would like to specify your own color
 % \definecolor{awesome}{HTML}{3E6D9C}
 
@@ -39,28 +39,28 @@
 % \definecolor{sectiondivider}{HTML}{5D5D5D}
 
 % Set false if you don't want to highlight section with awesome color
-\setbool{acvSectionColorHighlight}{true}
+\setbool{acvSectionColorHighlight}{false}
 
 % If you would like to change the social information separator from a pipe (|) to something else
 \renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
-
 
 %-------------------------------------------------------------------------------
 %	PERSONAL INFORMATION
 %	Comment any of the lines below if they are not required
 %-------------------------------------------------------------------------------
-% Available options: circle|rectangle,edge/noedge,left/right
-% \photo[rectangle,edge,right]{./examples/profile}
-\name{Byungjin}{Park}
-\position{Site Reliability Engineer{\enskip\cdotp\enskip}Software Architect}
-\address{235, World Cup buk-ro, Mapo-gu, Seoul, 03936, Republic of Korea}
 
-\mobile{(+82) 10-9030-1843}
-\email{posquit0.bj@gmail.com}
-%\dateofbirth{January 1st, 1970}
-\homepage{www.posquit0.com}
-\github{posquit0}
-\linkedin{posquit0}
+% Available options: circle|rectangle,edge/noedge,left/right
+\photo[circle,edge,right]{./profile}
+\name{István}{Urbán}
+% \position{Corporate Tax \& Reporting Enthusiast}
+% \address{42, Joy Road, Budapest, 1111, Hungary}
+
+% \mobile{(+36) 12-345-6789}
+\email{urbanistvan@me.com}
+% \dateofbirth{July 22nd, 1988}
+% \homepage{www.istvnurbn.me}
+% \github{istvnurbn}
+\linkedin{istvanurban}
 % \gitlab{gitlab-id}
 % \stackoverflow{SO-id}{SO-name}
 % \twitter{@twit}
@@ -74,28 +74,30 @@
 % \googlescholar{googlescholar-id}{}
 % \extrainfo{extra information}
 
-\quote{``Be the change that you want to see in the world."}
-
+% \quote{``The price of greatness is responsibility."}
 
 %-------------------------------------------------------------------------------
+
 \begin{document}
 
 % Print the header with above personal information
 % Give optional argument to change alignment(C: center, L: left, R: right)
+
 \makecvheader[C]
 
 % Print the footer with 3 arguments(<left>, <center>, <right>)
 % Leave any of these blank if they are not needed
+
 \makecvfooter
   {\today}
-  {Byungjin Park~~~·~~~Résumé}
+  {István Urbán~~~·~~~CV}
   {\thepage}
-
 
 %-------------------------------------------------------------------------------
 %	CV/RESUME CONTENT
 %	Each section is imported separately, open each file in turn to modify content
 %-------------------------------------------------------------------------------
+
 \input{sections/summary.tex}
 \input{sections/experience.tex}
 % \input{sections/honors.tex}
@@ -106,6 +108,6 @@
 \input{sections/education.tex}
 % \input{sections/extracurricular.tex}
 
-
 %-------------------------------------------------------------------------------
+
 \end{document}

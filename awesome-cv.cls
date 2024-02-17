@@ -85,10 +85,10 @@
 % Needed to deal hyperlink
 \RequirePackage[hidelinks,unicode,pdfpagelabels=false]{hyperref}
 \hypersetup{
-  pdftitle={CV},
+  pdftitle={Curriculum vitae},
   pdfauthor={István Urbán},
-  pdfsubject={Curriculum vitae},
-  pdfkeywords={}
+  pdfsubject={A written summary of István Urbán's career, qualifications, and education.},
+  pdfkeywords={CV}
 }
 % Solves issues Warning: File `cv.out' has changed
 \RequirePackage{bookmark}

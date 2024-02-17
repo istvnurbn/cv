@@ -680,6 +680,7 @@
       {}
       {\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#6}} \\}
   \end{tabular*}%
+  \filbreak
 }
 
 % Define an environment for cvsubentry

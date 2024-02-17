@@ -88,7 +88,7 @@
   pdftitle={CV},
   pdfauthor={István Urbán},
   pdfsubject={Curriculum vitae},
-  pdfkeywords={CV}
+  pdfkeywords={}
 }
 % Solves issues Warning: File `cv.out' has changed
 \RequirePackage{bookmark}
@@ -187,9 +187,10 @@
 
 % For elements of entry
 \newcommand*{\entrypositionstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\entrytitlestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\scshape\color{graytext} #1}}
+\newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\scshape\color{graytext} #1}}
 \newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
 \newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+\newcommand*{\taglinestyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
 \newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
 
 % For elements of subentry
@@ -660,8 +661,8 @@
   \end{center}
 }
 % Define an entry of cv information
-% Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
-\newcommand*{\cventry}[5]{%
+% Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<tagline>}{<description>}
+\newcommand*{\cventry}[6]{%
   \vspace{-2.0mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
@@ -670,9 +671,14 @@
       {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
       {\entrypositionstyle{#1} & \entrylocationstyle{#3} \\
       \entrytitlestyle{#2} & \entrydatestyle{#4} \\}
+  \end{tabular*} \\
     \ifstrempty{#5}
       {}
-      {\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}} \\}
+      {\vspace{1mm} \RaggedRight{\taglinestyle{#5}} \vspace{1mm} \\}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}  
+    \ifstrempty{#6}
+      {}
+      {\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#6}} \\}
   \end{tabular*}%
 }
 

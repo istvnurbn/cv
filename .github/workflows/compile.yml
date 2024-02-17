@@ -1,0 +1,34 @@
+name: Build CV
+
+on:
+#  push:
+#    branches:
+#      - main  # Set a branch name to trigger deployment
+  workflow_dispatch:        # Enable manual call of this action
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - name: 🛒 Checkout
+        uses: actions/checkout@v4
+
+      - name: ✨ Build CV
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: |
+            istvan_urban_cv_short.tex
+            istvan_urban_cv_tldr.tex
+          latexmk_use_xelatex: true
+
+      - name: 🚀 Deploy
+        uses: actions/upload-artifact@v4
+        with:
+          name: CV
+          path:  |
+            istvan_urban_cv_short.pdf
+            istvan_urban_cv_tldr.pdf

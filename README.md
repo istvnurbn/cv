@@ -10,4 +10,4 @@ The original `.tex` files and those I created or modified are licensed under the
 
 Feel free to take my `.tex` files and modify them to create your own resume. However, please don't use them for anything else without my permission!
 
-**You are not allowed to use my picture (`profile.jpg') for any purpose!**
+**You are not allowed to use my picture (`profile.jpg`) for any purpose!**

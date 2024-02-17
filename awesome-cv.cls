@@ -482,8 +482,8 @@
       \ifthenelse{\isundefined{\@linkedin}}%
         {}%
         {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
           \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedin\acvHeaderIconSep\@linkedin}%
+          \setbool{isstart}{false}%
         }%
       \ifthenelse{\isundefined{\@email}}%
         {}%
@@ -491,11 +491,11 @@
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
           \href{mailto:\@email}{\faEnvelope\acvHeaderIconSep\@email}%
         }%
-      \ifthenelse{\isundefined{\@mobile}}%
+        \ifthenelse{\isundefined{\@mobile}}%
         {}%
         {%
+          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
           \href{\@teluri}{\faMobile\acvHeaderIconSep\@mobile}%
-          \setbool{isstart}{false}%
         }%
       \ifthenelse{\isundefined{\@dateofbirth}}%
         {}%

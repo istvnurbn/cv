@@ -743,6 +743,21 @@
 	\skilltypestyle{#1} & \skillsetstyle{#2} \\
 }
 
+% Define an environment for cvsimplelist
+\newenvironment{cvsimplelist}{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-2.0mm}
+  \begin{justify}
+  \fontsize{9pt}{1em}
+  \bodyfontlight\color{text}
+  \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
+    \setlength{\parskip}{0pt}
+    \renewcommand{\labelitemi}{\bullet}
+}{%
+  \end{itemize}
+  \end{justify}
+}
+
 % Define an environment for cvitems(for cventry)
 \newenvironment{cvitems}{%
   \vspace{-4.0mm}

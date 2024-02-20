@@ -1,4 +1,4 @@
-name: Build CV
+name: Build CV on request
 
 on:
   workflow_dispatch:        # Enable manual call of this action

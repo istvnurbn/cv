@@ -1,0 +1,33 @@
+name: Build tagged CV
+
+on:
+  push:
+    tags:
+      - "*-*-*"  # Should be tagged like YYYY-MM-DD
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - name: 🛒 Checkout
+        uses: actions/checkout@v4
+
+      - name: ✨ Build CV
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: |
+            istvan_urban_cv_short.tex
+            istvan_urban_cv_tldr.tex
+          latexmk_use_xelatex: true
+
+      - name: 🚀 Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            istvan_urban_cv_short.pdf
+            istvan_urban_cv_tldr.pdf

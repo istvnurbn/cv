@@ -1,9 +1,6 @@
 name: Build CV
 
 on:
-#  push:
-#    branches:
-#      - main  # Set a branch name to trigger deployment
   workflow_dispatch:        # Enable manual call of this action
 
 jobs:

@@ -3,7 +3,7 @@ name: Build tagged CV
 on:
   push:
     tags:
-      - "v*-*-*"  # Should be tagged like YYYY-MM-DD
+      - "v*-*-*"  # Should be tagged like vYYYY-MM-DD
 
 jobs:
   deploy:

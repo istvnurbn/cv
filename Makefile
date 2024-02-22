@@ -8,7 +8,7 @@ all: create_dir documents
 
 create_dir:
 	
-	mkdir -p $(COMPILED)
+	mkdir -p $(COMPILED_DIR)
 
 documents: 
 

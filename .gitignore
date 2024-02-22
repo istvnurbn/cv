@@ -307,3 +307,6 @@ CHANGELOG
 .DS_Store
 .Trashes
 Thumbs.db
+
+# do not include compiled documents
+compiled/

@@ -1,10 +1,10 @@
-name: Build CV on request
+name: Build CV on demand
 
 on:
   workflow_dispatch:        # Enable manual call of this action
 
 jobs:
-  deploy:
+  compile:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -14,14 +14,10 @@ jobs:
       - name: 🛒 Checkout
         uses: actions/checkout@v4
 
-      - name: ✨ Build CV
+      - name: ✨ Compile CV
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: |
-            istvan_urban_cv_short.tex
-            istvan_urban_cv_tldr.tex
-            istvan_urban_cv_clean_short.tex
-            istvan_urban_cv_clean_tldr.tex
+          root_file: *.tex
           latexmk_use_xelatex: true
           continue_on_error: true
 
@@ -29,8 +25,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: CV
-          path:  |
-            istvan_urban_cv_short.pdf
-            istvan_urban_cv_tldr.pdf
-            istvan_urban_cv_clean_short.pdf
-            istvan_urban_cv_clean_tldr.pdf
+          path: *.pdf

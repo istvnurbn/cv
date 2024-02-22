@@ -2,7 +2,7 @@
 
 CC = xelatex
 DOCUMENTS = $(shell ls *.tex)
-COMPILED = compiled
+COMPILED_DIR = compiled
 
 all: create_dir documents
 
@@ -12,10 +12,10 @@ create_dir:
 
 documents: 
 
-	for doc in $(DOCUMENTS); do $(CC) -output-directory=$(COMPILED) $$doc; done
-	rm -rf $(COMPILED)/*.aux
-	rm -rf $(COMPILED)/*.log
+	for doc in $(DOCUMENTS); do $(CC) -output-directory=$(COMPILED_DIR) $$doc; done
+	rm -rf $(COMPILED_DIR)/*.aux
+	rm -rf $(COMPILED_DIR)/*.log
 
 clean:
 	
-	rm -rf $(COMPILED)
+	rm -rf $(COMPILED_DIR)

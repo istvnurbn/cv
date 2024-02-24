@@ -1,6 +1,9 @@
 name: Build CV for istvnurbn.me
 
 on:
+  push:
+    tags:
+      - "v*-*-*"  # Should be tagged like vYYYY-MM-DD
   workflow_dispatch:        # Enable manual call of this action
 
 jobs:
@@ -17,6 +20,8 @@ jobs:
       - name: ✨ Compile CV
         uses: xu-cheng/latex-action@v3
         with:
+          pre_compile: mkdir -p compiled
+          args: -output-directory=compiled
           root_file: |
             istvan_urban_cv_clean_short.tex
             istvan_urban_cv_clean_tldr.tex
@@ -25,14 +30,16 @@ jobs:
     
       - name: 🧹 Clean up
         run: |
-          rm -rf *.aux
-          rm -rf *.log
+          rm -rf compiled/*.aux
+          rm -rf compiled/*.log
 
-      - name: 🌍 Push to web
-        uses: s0/git-publish-subdir-action@develop
+      - name: 🌍 Push to istvanurban.me
+        uses: cpina/github-action-push-to-another-repository@main
         env:
-          REPO: self
-          BRANCH: web # The branch name where you want to push the assets
-          FOLDER: /. # The directory where your assets are generated
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this - you don't need to bother getting a token
-          MESSAGE: "Build: ({sha}) - {msg}" # The commit message
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-directory: 'compiled'
+          destination-github-username: 'istvnurbn'
+          destination-repository-name: 'istvnurbn.github.io'
+          target-branch: 'main'
+          target-directory: 'static/files/cv'

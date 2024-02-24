@@ -1,10 +1,10 @@
-name: Compile CV for istvnurbn.me
+name: Build CV for istvnurbn.me
 
 on:
   workflow_dispatch:        # Enable manual call of this action
 
 jobs:
-  compile:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -22,6 +22,11 @@ jobs:
             istvan_urban_cv_clean_tldr.tex
           latexmk_use_xelatex: true
           continue_on_error: true
+    
+      - name: 🧹 Clean up
+        run: |
+          rm -rf *.aux
+          rm -rf *.log
 
       - name: 🌍 Push to web
         uses: s0/git-publish-subdir-action@develop

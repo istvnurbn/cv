@@ -14,13 +14,16 @@ jobs:
       - name: 🛒 Checkout
         uses: actions/checkout@v4
 
-      - name: ✨ Build documents
-        uses: docker://xucheng/texlive-full:latest
-        run: |
-          find . -name "*.tex" -exec latexmk -pdf -file-line-error -interaction=nonstopmode {} \;
+      - name: ✨ Build CV
+        uses: xu-cheng/texlive-action@v2
+        with:
+          scheme: full
+          run: |
+            apk add make
+            make
 
       - name: 🚀 Deploy
         uses: actions/upload-artifact@v4
         with:
           name: CV
-          path: *.pdf
+          path: compiled/*

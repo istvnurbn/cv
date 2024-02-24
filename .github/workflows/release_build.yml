@@ -6,7 +6,7 @@ on:
       - "v*-*-*"  # Should be tagged like vYYYY-MM-DD
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -17,21 +17,20 @@ jobs:
         uses: actions/checkout@v4
 
       - name: ✨ Build CV
-        uses: xu-cheng/latex-action@v3
+        uses: xu-cheng/texlive-action@v2
         with:
-          root_file: |
-            istvan_urban_cv_short.tex
-            istvan_urban_cv_tldr.tex
-            istvan_urban_cv_clean_short.tex
-            istvan_urban_cv_clean_tldr.tex
-          latexmk_use_xelatex: true
-          continue_on_error: true
+          scheme: full
+          run: |
+            apk add make
+            make
+
+      - name: 📃 Generate CHANGELOG
+        run: |
+          echo "# 📃 changelog\n" >> compiled/CHANGELOG
+          git log --oneline $(git describe --tags --abbrev=0 @^)..@ --pretty=format:"%h - %s" >> compiled/CHANGELOG
 
       - name: 🚀 Release
         uses: softprops/action-gh-release@v1
         with:
-          files: |
-            istvan_urban_cv_short.pdf
-            istvan_urban_cv_tldr.pdf
-            istvan_urban_cv_clean_short.pdf
-            istvan_urban_cv_clean_tldr.pdf
+          files: compiled/*.pdf
+          body_path: compiled/CHANGELOG

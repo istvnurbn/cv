@@ -17,7 +17,7 @@ A minimal `Makefile` is included in this repo, so all you have to do is run the 
 
 `docker run --rm --user $(id -u):$(id -g) -i -w "/doc" -v "$PWD":/doc thomasweise/docker-texlive-full make`
 
-:light_bulb: For macOS users [Colima](https://github.com/abiosoft/colima) is recommended.
+:bulb: For macOS users [Colima](https://github.com/abiosoft/colima) is recommended.
 
 ## Licensing
 

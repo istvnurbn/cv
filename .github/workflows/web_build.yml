@@ -30,6 +30,9 @@ jobs:
           post_compile: |
             rm -rf compiled/*.aux
             rm -rf compiled/*.log
+            rm -rf compiled/*.fdb_latexmk
+            rm -rf compiled/*.fls
+            rm -rf compiled/*.xdv
     
       - name: 🌍 Push to istvanurban.me
         uses: cpina/github-action-push-to-another-repository@main

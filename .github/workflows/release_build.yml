@@ -21,13 +21,10 @@ jobs:
         with:
           scheme: full
           run: |
-            apk add make
+            apk add make git
             make
-
-      - name: 📃 Generate CHANGELOG
-        run: |
-          echo "# 📃 changelog\n" >> compiled/CHANGELOG
-          git log --oneline $(git describe --tags --abbrev=0 @^)..@ --pretty=format:"%h - %s" >> compiled/CHANGELOG
+            echo "# 📃 changelog\n" >> compiled/CHANGELOG
+            git log --oneline $(git describe --tags --abbrev=0 @^)..@ --pretty=format:"%h - %s" >> compiled/CHANGELOG
 
       - name: 🚀 Release
         uses: softprops/action-gh-release@v1

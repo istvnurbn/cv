@@ -6,7 +6,7 @@ These are the source files for my resume. It is based on the [Awesome CV Class F
 
 ### GitHub
 
-There are two actions set up in this repo to compile PDF files:
+There are two actions set up in this repository to compile PDF files:
 
 - The `manual_build.yml` will do this on demand by clicking the *Run workflow* button under `Actions` **>>** `Workflows` **>>** `Build CV on demand`. The resulting PDFs will be available zipped in the `Artifacts` section of the successful run's summary.
 
@@ -16,9 +16,11 @@ There are two actions set up in this repo to compile PDF files:
 
 A minimal `Makefile` is included in this repo, so all you have to do is run the `make` command in your terminal. If you do not want to install the full Tex Live distribution, install Docker and run the following command:
 
-`docker run --rm --user $(id -u):$(id -g) -i -w "/doc" -v "$PWD":/doc thomasweise/docker-texlive-full make`
+```
+docker run --rm --user $(id -u):$(id -g) -i -w "/doc" -v "$PWD":/doc thomasweise/docker-texlive-full make
+```
 
-:bulb: For macOS users [Colima](https://github.com/abiosoft/colima) is recommended.
+*:bulb: For macOS users [Colima](https://github.com/abiosoft/colima) is recommended.*
 
 ## Licensing
 

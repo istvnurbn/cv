@@ -9,6 +9,7 @@ These are the source files for my resume. It is based on the [Awesome CV Class F
 There are two actions set up in this repo to compile PDF files:
 
 - The `manual_build.yml` will do this on demand by clicking the *Run workflow* button under `Actions` **>>** `Workflows` **>>** `Build CV on demand`. The resulting PDFs will be available zipped in the `Artifacts` section of the successful run's summary.
+
 - If you tag your changes (`git tag -a v*-*-* -m "Your comment here."`) the `release_build.yml` action will automatically compile the PDF files and will do a release.
 
 ### Local

@@ -20,19 +20,17 @@ jobs:
       - name: ✨ Compile CV
         uses: xu-cheng/latex-action@v3
         with:
-          pre_compile: mkdir -p compiled
-          args: -output-directory=compiled
           root_file: |
             istvan_urban_cv_clean_short.tex
             istvan_urban_cv_clean_tldr.tex
+          args: -output-directory=compiled
           latexmk_use_xelatex: true
           continue_on_error: true
+          pre_compile: mkdir -p compiled
+          post_compile: |
+            rm -rf compiled/*.aux
+            rm -rf compiled/*.log
     
-      - name: 🧹 Clean up
-        run: |
-          rm -rf compiled/*.aux
-          rm -rf compiled/*.log
-
       - name: 🌍 Push to istvanurban.me
         uses: cpina/github-action-push-to-another-repository@main
         env:

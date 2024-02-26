@@ -22,10 +22,11 @@ jobs:
           scheme: full
           run: |
             apk add make git
-            make
+            mkdir -p compiled
             git config --system --add safe.directory '*'
             echo "# 📃 changelog\n" >> compiled/CHANGELOG
-            git log --oneline $(git describe --tags --abbrev=0 @^)..@ --pretty=format:"%h - %s" >> compiled/CHANGELOG
+            git log $(git describe --tags --abbrev=0 @^)..@ --oneline --date-order --pretty=format:"%h - %s" >> compiled/CHANGELOG
+            make
 
       - name: 🚀 Release
         uses: softprops/action-gh-release@v1

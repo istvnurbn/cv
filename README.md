@@ -2,6 +2,9 @@
 
 These are the source files for my resume. It is based on the [Awesome CV Class File](https://github.com/posquit0/Awesome-CV) by [@posquit0](https://github.com/posquit0) with some slight modifications to better suit my needs.
 
+![Build tagged CV](https://github.com/istvnurbn/cv/actions/workflows/release_build.yml/badge.svg)
+![Build CV for istvnurbn.me](https://github.com/istvnurbn/cv/actions/workflows/web_build.yml/badge.svg)
+
 ## Compiling
 
 ### GitHub

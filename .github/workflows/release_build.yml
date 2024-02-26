@@ -15,6 +15,9 @@ jobs:
     steps:
       - name: 🛒 Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
 
       - name: ✨ Build CV
         uses: xu-cheng/texlive-action@v2
@@ -24,7 +27,8 @@ jobs:
             apk add make git
             mkdir -p compiled
             git config --system --add safe.directory '*'
-            echo "# 📃 changelog\n" >> compiled/CHANGELOG
+            echo "# 📃 changelog" >> compiled/CHANGELOG
+            echo >> compiled/CHANGELOG
             git log $(git describe --tags --abbrev=0 @^)..@ --oneline --date-order --pretty=format:"%h - %s" >> compiled/CHANGELOG
             make
 

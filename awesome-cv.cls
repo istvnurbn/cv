@@ -672,20 +672,60 @@
   \vspace{-2.0mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
-  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
-    \ifempty{#2#3}
-      {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-      {\entrypositionstyle{#1} & \entrylocationstyle{#3} \\
-      \entrytitlestyle{#2} & \entrydatestyle{#4} \\}
-  \end{tabular*} \\
-    \ifstrempty{#5}
-      {}
-      {\vspace{1mm} \RaggedRight{\taglinestyle{#5}} \vspace{1mm} \\}
-  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}  
-    \ifstrempty{#6}
-      {}
-      {\multicolumn{2}{L{\textwidth}}{\descriptionstyle{#6}} \\}
-  \end{tabular*}%
+  \ifstrempty{#5}
+    {
+      \ifstrempty{#6}
+        {
+          \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+            \ifempty{#2#3}
+              {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+              {\entrypositionstyle{#1} & \entrylocationstyle{#3} \\
+              \entrytitlestyle{#2} & \entrydatestyle{#4} \\}
+          \end{tabular*}%
+          \vspace{2.0mm}
+          \\
+        }
+        {
+          \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+            \ifempty{#2#3}
+              {\entrypositionstyle{#1} & \entrydatestyle{#4} \\
+              \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#6}}}
+              {\entrypositionstyle{#1} & \entrylocationstyle{#3} \\
+              \entrytitlestyle{#2} & \entrydatestyle{#4} \\
+              \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#6}}}
+          \end{tabular*}%
+          \vspace{2.0mm}
+          \\
+        }
+    }
+    {
+      \ifstrempty{#6}
+        {
+          \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+            \ifempty{#2#3}
+              {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+              {\entrypositionstyle{#1} & \entrylocationstyle{#3} \\
+              \entrytitlestyle{#2} & \entrydatestyle{#4} \\}
+          \end{tabular*}%
+          \\
+          \vspace{1mm} \RaggedRight{\taglinestyle{#5}} \vspace{3.0mm} \\
+        }
+        {
+          \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+            \ifempty{#2#3}
+              {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+              {\entrypositionstyle{#1} & \entrylocationstyle{#3} \\
+              \entrytitlestyle{#2} & \entrydatestyle{#4} \\}
+          \end{tabular*}%
+          \\
+          \vspace{1mm} \RaggedRight{\taglinestyle{#5}} \vspace{1mm} \\
+          \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+            \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#6}}
+          \end{tabular*}%
+          \vspace{2.0mm}
+          \\
+        }
+    }
   \filbreak
 }
 

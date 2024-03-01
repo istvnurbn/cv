@@ -500,7 +500,7 @@
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{\@teluri}{\faMobile\acvHeaderIconSep\@mobile}%
+          \href{\@teluri}{\faPhone\acvHeaderIconSep\@mobile}%
         }%
       \ifthenelse{\isundefined{\@dateofbirth}}%
         {}%

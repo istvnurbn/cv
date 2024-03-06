@@ -9,33 +9,33 @@ These are the source files for my resume. It is based on the [Awesome CV Class F
 
 ### New
 
-- The order of header socials matches their order in the source file (thanks @rhagenson) - #b56b4ab
-- Added an option for tagline/summary part in the \cventry - #b23bfe7
-- Added option to change the \photosize - #e63932a
-- Added option to create a lists with \cvsimplelist - #829484c
-- Added option to list projects with \cvproject - #164ce5a
+- The order of header socials matches their order in the source file (thanks @rhagenson) - `b56b4ab`
+- Added an option for tagline/summary part in the \cventry - `b23bfe7`
+- Added option to change the \photosize - `e63932a`
+- Added option to create a lists with \cvsimplelist - `829484c`
+- Added option to list projects with \cvproject - `164ce5a`
 
 ### Fixes
 
-- No more LaTeX compile error when social info is missing - #23a1953
-- The \cventry handles all data combinations better (also no more \hbox warnings) - #3b0d053
-- Keep all lines of a \cventry on the same page - #6602b4c
-- No more \hbox issues - #3b0d053, #b0d745b, #fb14d04
-- Wacky solutions to fix the \hbox warnings in \makecvheader - #30451a7, #8b2ab46
-- Reworked the Makefile to work better with local and GitHub builds - #f713b6f
+- No more LaTeX compile error when social info is missing - `23a1953`
+- The \cventry handles all data combinations better (also no more \hbox warnings) - `3b0d053`
+- Keep all lines of a \cventry on the same page - `6602b4c`
+- No more \hbox issues - `3b0d053`, `b0d745b`, `fb14d04`
+- Wacky solutions to fix the \hbox warnings in \makecvheader - `30451a7`, `8b2ab46`
+- Reworked the Makefile to work better with local and GitHub builds - `f713b6f`
 
 ### Looks
 
-- Switch up \entrypositionstyle and \entrytitlestyle - #d323ab4
-- Thinner lines in section dividers - #a01630f
-- Unify font sizes - #73581ea
-- Added extra colors from ColorCodes.io - #9e672fc
-- Change the mobile icon to a phone - #6c512e8
+- Switch up \entrypositionstyle and \entrytitlestyle - `d323ab4`
+- Thinner lines in section dividers - `a01630f`
+- Unify font sizes - `73581ea`
+- Added extra colors from ColorCodes.io - `9e672fc`
+- Change the mobile icon to a phone - `6c512e8`
 
 ### Misc.
 
-- Added example for all supported social IDs - #7a38301
-- Removed unnecessary empty lines - #6728ed1
+- Added example for all supported social IDs - `7a38301`
+- Removed unnecessary empty lines - `6728ed1`
 
 ## Compiling
 

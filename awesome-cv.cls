@@ -86,7 +86,7 @@
 % Needed to deal hyperlink
 \RequirePackage[hidelinks,unicode,pdfpagelabels=false]{hyperref}
 \hypersetup{
-  pdftitle={Curriculum vitae},
+  pdftitle={Curriculum Vitae},
   pdfauthor={István Urbán},
   pdfsubject={A written summary of István Urbán's career, qualifications, and education.},
   pdfkeywords={CV}
@@ -555,7 +555,7 @@
   \vspace{\acvSectionTopSkip}
   \sectionstyle{#1}
   \phantomsection
-  \color{sectiondivider}\vhrulefill{0.9pt}
+  \color{sectiondivider}\vhrulefill{0.5pt}
 }
 
 % Define a subsection for CV

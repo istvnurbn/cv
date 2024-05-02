@@ -43,4 +43,4 @@ jobs:
           destination-github-username: 'istvnurbn'
           destination-repository-name: 'istvnurbn.github.io'
           target-branch: 'main'
-          target-directory: 'assets/files'
+          target-directory: 'content/cv'

@@ -613,7 +613,7 @@
               \entrytitlestyle{#2} & \entrydatestyle{#4} \\
               \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#6}}}
           \end{tabular*}%
-          \vspace{-4.0mm}
+          % \vspace{-4.0mm}
           \\
         }
     }
@@ -641,7 +641,7 @@
           \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
             \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#6}}
           \end{tabular*}%
-          \vspace{-4.0mm}
+          % \vspace{-4.0mm}
           \\
         }
     }
@@ -747,7 +747,7 @@
 }{%
   \end{itemize}
   \end{justify}
-  % \vspace{-4.0mm}
+  \vspace{-4.0mm}
 }
 
 %-------------------------------------------------------------------------------

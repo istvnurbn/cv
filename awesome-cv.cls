@@ -588,7 +588,7 @@
 % Define an entry of cv information
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<tagline>}{<description>}
 \newcommand*{\cventry}[6]{%
-  % \vspace{-2.0mm}
+  \vspace{2.0mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \ifstrempty{#5}

@@ -200,7 +200,7 @@
 \newcommand*{\bodyfontlight}{\sourcesansprolight}
 
 %-------------------------------------------------------------------------------
-%                Configuration for styles
+%                Configuration for styles
 %-------------------------------------------------------------------------------
 
 % Configure styles for each CV elements
@@ -569,17 +569,17 @@
 
 % Define a paragraph for CV
 \newenvironment{cvparagraph}{%
-  \vspace{\acvSectionContentTopSkip}
-  \vspace{-3mm}
+  % \vspace{\acvSectionContentTopSkip}
+  % \vspace{-3mm}
   \paragraphstyle
 }{%
   \par
-  \vspace{2mm}
+  % \vspace{2mm}
 }
 
 % Define an environment for cventry
 \newenvironment{cventries}{%
-  \vspace{\acvSectionContentTopSkip}
+  % \vspace{\acvSectionContentTopSkip}
   \begin{center}
 }{%
   \end{center}
@@ -613,7 +613,7 @@
               \entrytitlestyle{#2} & \entrydatestyle{#4} \\
               \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#6}}}
           \end{tabular*}%
-          \vspace{2.0mm}
+          \vspace{-4.0mm}
           \\
         }
     }
@@ -641,7 +641,7 @@
           \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
             \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#6}}
           \end{tabular*}%
-          \vspace{2.0mm}
+          \vspace{-4.0mm}
           \\
         }
     }

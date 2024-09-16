@@ -13,8 +13,7 @@ create_dir:
 documents: 
 
 	for doc in $(DOCUMENTS); do $(CC) -output-directory=$(COMPILED_DIR) $$doc; done
-	rm -rf $(COMPILED_DIR)/*.aux
-	rm -rf $(COMPILED_DIR)/*.log
+	find $(COMPILED_DIR) -type f ! -iname "*.pdf" -delete
 
 clean:
 	

@@ -13,6 +13,9 @@ jobs:
     steps:
       - name: 🛒 Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
 
       - name: ✨ Build CV
         uses: xu-cheng/latex-action@v3
@@ -27,15 +30,9 @@ jobs:
           continue_on_error: true
           texlive_version: 2022
           pre_compile: mkdir -p compiled
-          post_compile: |
-            rm -rf compiled/*.aux
-            rm -rf compiled/*.log
-            rm -rf compiled/*.fdb_latexmk
-            rm -rf compiled/*.fls
-            rm -rf compiled/*.xdv
 
       - name: 🚀 Deploy
         uses: actions/upload-artifact@v4
         with:
           name: CV
-          path: compiled/*
+          path: compiled/*.pdf

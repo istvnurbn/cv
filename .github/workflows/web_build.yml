@@ -26,6 +26,7 @@ jobs:
           args: -output-directory=compiled
           latexmk_use_xelatex: true
           continue_on_error: true
+          texlive_version: 2022
           pre_compile: mkdir -p compiled
           post_compile: |
             rm -rf compiled/*.aux

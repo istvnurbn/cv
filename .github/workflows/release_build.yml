@@ -18,19 +18,26 @@ jobs:
         with:
           fetch-depth: 0
           fetch-tags: true
-
+      
       - name: ✨ Build CV
-        uses: xu-cheng/texlive-action@v2
+        uses: xu-cheng/latex-action@v3
         with:
-          scheme: full
-          run: |
-            apk add make git
+          root_file: |
+            istvan_urban_cv_clean_short.tex
+            istvan_urban_cv_clean_tldr.tex
+            istvan_urban_cv_short.tex
+            istvan_urban_cv_tldr.tex
+          args: -output-directory=compiled
+          extra_system_packages: git
+          latexmk_use_xelatex: true
+          continue_on_error: true
+          texlive_version: 2022
+          pre_compile: |
             mkdir -p compiled
             git config --system --add safe.directory '*'
             echo "# 📃 changelog" >> compiled/CHANGELOG
             echo >> compiled/CHANGELOG
             git log $(git describe --tags --abbrev=0 @^)..@ --oneline --date-order --pretty=format:"%h - %s" >> compiled/CHANGELOG
-            make
 
       - name: 🚀 Release
         uses: softprops/action-gh-release@v1

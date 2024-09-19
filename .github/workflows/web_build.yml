@@ -3,8 +3,8 @@ name: Build CV for istvnurbn.me
 on:
   push:
     tags:
-      - "v*-*-*"  # Should be tagged like vYYYY-MM-DD
-  workflow_dispatch:        # Enable manual call of this action
+      - "v*-*-*" # Should be tagged like vYYYY-MM-DD
+  workflow_dispatch: # Enable manual call of this action
 
 jobs:
   build:
@@ -32,14 +32,14 @@ jobs:
           texlive_version: 2022
           pre_compile: mkdir -p compiled
           post_compile: find compiled -type f ! -iname "*.pdf" -delete
-    
+
       - name: 🌍 Push to istvanurban.me
         uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: 'compiled'
-          destination-github-username: 'istvnurbn'
-          destination-repository-name: 'istvnurbn.github.io'
-          target-branch: 'main'
-          target-directory: 'assets/cv'
+          source-directory: "compiled"
+          destination-github-username: "istvnurbn"
+          destination-repository-name: "istvnurbn.github.io"
+          target-branch: "main"
+          target-directory: "static/cv"

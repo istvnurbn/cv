@@ -409,6 +409,8 @@
 
 % Defines writer's quote (optional)
 % Usage: \quote{<quote>}
+% Note: this redefines LaTeX's standard `quote` environment begin-hook, so
+% \begin{quote}...\end{quote} cannot be used elsewhere in the document.
 \renewcommand*{\quote}[1]{\def\@quote{#1}}
 
 % Defines recipient's information (cover letter only)
@@ -438,6 +440,7 @@
 % Defines an enclosure for letter (cover letter only, optional)
 % Usage: \letterenclosure[<enclosure name>]{<enclosure>}
 \newcommand*{\letterenclname}[1][Enclosure]{\def\@letterenclname{#1}}
+\letterenclname
 \newcommand*{\letterenclosure}[2][]{%
 	% if an optional argument is provided, use it to redefine \enclname
 	\ifthenelse{\equal{#1}{}}{}{\def\@letterenclname{#1}}
@@ -662,11 +665,10 @@
 	\setlength{\extrarowheight}{0pt}
 	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
 		\setlength\leftskip{0.2cm}
-		\subentrytitlestyle{#2} & \ifthenelse{\equal{#1}{}}
-		{\subentrydatestyle{#3}}{}
+		\subentrytitlestyle{#2} & \subentrydatestyle{#3} \\
 		\ifthenelse{\equal{#1}{}}
 		{}
-		{\subentrypositionstyle{#1} & \subentrydatestyle{#3} \\}
+		{\subentrypositionstyle{#1} & \\}
 		\ifthenelse{\equal{#4}{}}
 		{}
 		{\multicolumn{2}{L{17.0cm}}{\subdescriptionstyle{#4}} \\}

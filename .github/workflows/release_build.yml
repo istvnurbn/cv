@@ -14,7 +14,7 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - name: 🛒 Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           fetch-tags: true
@@ -40,7 +40,7 @@ jobs:
             git log $(git describe --tags --abbrev=0 @^)..@ --oneline --date-order --pretty=format:"%h - %s" >> compiled/CHANGELOG
 
       - name: 🚀 Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: compiled/*.pdf
           body_path: compiled/CHANGELOG

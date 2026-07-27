@@ -1,13 +1,14 @@
-# Run this command to build the PDFs:
+# Classic nix-shell entry point (no flakes required):
 # > nix-shell --command make
+#
+# If you have flakes enabled, `nix develop` (see flake.nix) works the same way.
 
 {
   pkgs ? import <nixpkgs> { },
 }:
-with pkgs;
 
-mkShell {
+pkgs.mkShell {
   buildInputs = [
-    texliveFull
+    pkgs.texliveFull
   ];
 }

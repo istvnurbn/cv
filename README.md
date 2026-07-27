@@ -59,7 +59,7 @@ docker run --rm --user $(id -u):$(id -g) -i -w "/doc" -v "$PWD":/doc thomasweise
 
 :bulb: *For macOS users [Colima](https://github.com/abiosoft/colima) is recommended.*
 
-If you are a member of the Church of Nix, a simple `nix-shell --command make` will suffice.
+If you are a member of the Church of Nix, a simple `nix-shell --command make` will suffice. If you have flakes enabled, `nix develop --command make` works the same way.
 
 ## Licensing
 

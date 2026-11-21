@@ -33,6 +33,7 @@ jobs:
           post_compile: find compiled -type f ! -iname "*.pdf" -delete
 
       - name: 🌍 Push to istvanurban.me
+        if: startsWith(github.ref, 'refs/tags/') # manual runs from a branch only build
         uses: cpina/github-action-push-to-another-repository@55306faa4ed53b815ae49e564af8cfb359d32ae2 # v1.7.3
         env:
           SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}

@@ -77,6 +77,8 @@
 \RequirePackage{unicode-math}
 % Needed to use icons from font-awesome
 \RequirePackage{fontawesome6}
+% Needed to give icons readable text for copy-paste, screen readers and ATS
+\RequirePackage{accsupp}
 \RequirePackage{roboto}
 \RequirePackage[default,opentype]{sourcesanspro}
 % Needed for the photo ID
@@ -301,11 +303,12 @@
 	\ifnonprint{\ignorespaces\header}{%
 		\protected@edef\header{#1}%
 	}{%
-		\protected@edef\header{\header{} \acvHeaderSocialSep #1}%
+		\protected@edef\header{\header{} \acvSocialSep #1}%
 	}%
 }%
-\newcommand{\headerSocial}[3]{
-	\headerAdd{\href{#2#3}{#1\acvHeaderIconSep#3}}
+% Usage: \headerSocial{<icon>}{<url prefix>}{<id>}{<readable prefix>}
+\newcommand{\headerSocial}[4]{
+	\headerAdd{\href{#2#3}{\faAlt{#4#3}{#1}{#3}}}
 }
 
 % Defines writer's mobile (optional)
@@ -318,82 +321,103 @@
 	\StrDel{\cleanmobile}{-}[\cleanmobile]%
 	\StrDel{\cleanmobile}{(}[\cleanmobile]%
 	\StrDel{\cleanmobile}{)}[\cleanmobile]%
-	\headerAdd{\href{tel:\cleanmobile}{\faPhone\acvHeaderIconSep#1}}
+	\headerAdd{\href{tel:\cleanmobile}{\faAlt{tel:#1}{\faPhone}{#1}}}
 }
 
 % Defines writer's email (optional)
 % Usage: \email{<email address>}
-\newcommand{\email}[1]{\headerSocial{\faEnvelope}{mailto:}{#1}}
+\newcommand{\email}[1]{\headerSocial{\faEnvelope}{mailto:}{#1}{mailto:}}
 
 % Defines writer's date of birth (optional)
 % Usage: \dateofbirth{<date>}
-\newcommand{\dateofbirth}[1]{\headerAdd{\faCakeCandles\acvHeaderIconSep#1}}
+\newcommand{\dateofbirth}[1]{\headerAdd{\faAlt{DoB: #1}{\faCakeCandles}{#1}}}
 
 % Defines writer's homepage (optional)
 % Usage: \homepage{<url>}
-\newcommand{\homepage}[1]{\headerSocial{\faHouseChimney}{https://}{#1}}
+\newcommand{\homepage}[1]{\headerSocial{\faHouseChimney}{https://}{#1}{homepage: }}
 
 % Defines writer's github (optional)
 % Usage: \github{<github-nick>}
-\newcommand{\github}[1]{\headerSocial{\faGithub}{https://github.com/}{#1}}
+\newcommand{\github}[1]{\headerSocial{\faGithub}{https://github.com/}{#1}{GitHub: @}}
 
 % Defines writer's gitlab (optional)
 % Usage: \gitlab{<gitlab-nick>}
-\newcommand{\gitlab}[1]{\headerSocial{\faGitlab}{https://gitlab.com/}{#1}}
+\newcommand{\gitlab}[1]{\headerSocial{\faGitlab}{https://gitlab.com/}{#1}{GitLab: @}}
 
 % Defines writer's bitbucket (optional)
 % Usage: \bitbucket{<bitbucket-nick>}
-\newcommand{\bitbucket}[1]{\headerSocial{\faBitbucket}{https://bitbucket.com/}{#1}}
+\newcommand{\bitbucket}[1]{\headerSocial{\faBitbucket}{https://bitbucket.com/}{#1}{BitBucket: @}}
 
 % Defines writer's stackoverflow profile (optional)
 % Usage: \stackoverflow{<so userid>}{<so username>}
 %   e.g.https://stackoverflow.com/users/123456/sam-smith
 %       would be \stackoverflow{123456}{sam-smith}
-\newcommand{\stackoverflow}[2]{\headerAdd{\href{https://stackoverflow.com/users/#1}{\faStackOverflow\acvHeaderIconSep#2}}}
+\newcommand{\stackoverflow}[2]{\headerAdd{\href{https://stackoverflow.com/users/#1}{\faAlt{StackOverflow: @#2}{\faStackOverflow}{#2}}}}
 
 % Defines writer's linked-in (optional)
 % Usage: \linkedin{<linked-in-nick>}
-\newcommand{\linkedin}[1]{\headerSocial{\faLinkedin}{https://www.linkedin.com/in/}{#1}}
+\newcommand{\linkedin}[1]{\headerSocial{\faLinkedin}{https://www.linkedin.com/in/}{#1}{LinkedIn: /in/}}
 
 % Defines writer's orcid (optional)
 % Usage: \orcid{<orcid-num>}
-\newcommand{\orcid}[1]{\headerSocial{\faOrcid}{https://orcid.org/}{#1}}
+\newcommand{\orcid}[1]{\headerSocial{\faOrcid}{https://orcid.org/}{#1}{ORCID: }}
 
 % Defines writer's twitter (optional)
 % Usage: \twitter{<twitter handle>}
-\newcommand{\twitter}[1]{\headerSocial{\faTwitter}{https://twitter.com/}{#1}}
+\newcommand{\twitter}[1]{\headerSocial{\faTwitter}{https://twitter.com/}{#1}{Twitter: @}}
+
+% Defines writer's X, formerly Twitter (optional)
+% Usage: \x{<x handle>}
+\newcommand{\x}[1]{\headerSocial{\faXTwitter}{https://x.com/}{#1}{X: @}}
+
+% Defines writer's WhatsApp (optional)
+% Usage: \whatsapp{<mobile number>}
+\newcommand{\whatsapp}[1]{%
+	\def\cleanwhatsapp{#1}%
+	% wa.me wants digits only
+	\StrDel{\cleanwhatsapp}{ }[\cleanwhatsapp]%
+	\StrDel{\cleanwhatsapp}{+}[\cleanwhatsapp]%
+	\StrDel{\cleanwhatsapp}{-}[\cleanwhatsapp]%
+	\StrDel{\cleanwhatsapp}{(}[\cleanwhatsapp]%
+	\StrDel{\cleanwhatsapp}{)}[\cleanwhatsapp]%
+	\headerAdd{\href{https://wa.me/\cleanwhatsapp}{\faAlt{WhatsApp: #1}{\faSquareWhatsapp}{#1}}}%
+}
+
+% Defines writer's Telegram (optional)
+% Usage: \telegram{<telegram username>}
+\newcommand{\telegram}[1]{\headerSocial{\faTelegram}{https://t.me/}{#1}{Telegram: }}
 
 % Defines writer's Mastodon (optional)
 % Usage: \mastodon{<instance>}{<mastodon-nick>}
-\newcommand{\mastodon}[2]{\headerAdd{\href{https://#1/@#2}{\faMastodon\acvHeaderIconSep#2}}}
+\newcommand{\mastodon}[2]{\headerAdd{\href{https://#1/@#2}{\faAlt{Mastodon: #2@#1}{\faMastodon}{#2}}}}
 
 % Defines writer's resarchgate (optional)
 % Usage: \researchgate{<researchgate-account>}
-\newcommand{\researchgate}[1]{\headerSocial{\faResearchgate}{https://www.researchgate.net/profile/}{#1}}
+\newcommand{\researchgate}[1]{\headerSocial{\faResearchgate}{https://www.researchgate.net/profile/}{#1}{ResearchGate: }}
 
 % Defines writer's skype (optional)
 % Usage: \skype{<skype account>}
-\newcommand{\skype}[1]{\headerAdd{\faSkype\acvHeaderIconSep#1}}
+\newcommand{\skype}[1]{\headerAdd{\faAlt{Skype: #1}{\faSkype}{#1}}}
 
 % Defines writer's reddit (optional)
 % Usage: \reddit{<reddit account>}
-\newcommand{\reddit}[1]{\headerSocial{\faReddit}{https://www.reddit.com/user/}{#1}}
+\newcommand{\reddit}[1]{\headerSocial{\faReddit}{https://www.reddit.com/user/}{#1}{Reddit: /u/}}
 
 % Defines writer's xing (optional)
 % Usage: \xing{<xing name>}
-\newcommand{\xing}[1]{\headerSocial{\faXing}{https://www.xing.com/profile/}{#1}}
+\newcommand{\xing}[1]{\headerSocial{\faXing}{https://www.xing.com/profile/}{#1}{Xing: }}
 
 % Defines writer's medium profile (optional)
 % Usage: \medium{<medium account>}
-\newcommand{\medium}[1]{\headerSocial{\faMedium}{https://medium.com/}{#1}}
+\newcommand{\medium}[1]{\headerSocial{\faMedium}{https://medium.com/@}{#1}{Medium: @}}
 
 % Defines writer's kaggle (optional)
 % Usage: \kaggle{<kaggle handle>}
-\newcommand{\kaggle}[1]{\headerSocial{\faKaggle}{https://kaggle.com/}{#1}}
+\newcommand{\kaggle}[1]{\headerSocial{\faKaggle}{https://kaggle.com/}{#1}{Kaggle: }}
 
 % Defines writer's Hackerrank (optional)
 % Usage: \hackerrank{<Hackerrank profile name>}
-\newcommand{\hackerrank}[1]{\headerSocial{\faHackerrank}{https://www.hackerrank.com/}{#1}}
+\newcommand{\hackerrank}[1]{\headerSocial{\faHackerrank}{https://www.hackerrank.com/}{#1}{HackerRank: }}
 
 % Defines writer's google scholar profile (optional)
 % Usage: \googlescholar{<googlescholar userid>}{<googlescholar username>}
@@ -401,7 +425,11 @@
 % would be \googlescholar{wpZDx1cAAAAJ}{Name-to-display-next-icon}
 % If 'googlescholar-name' is not provided than it defaults to
 % '\firstname \lastname'
-\newcommand{\googlescholar}[2]{\headerAdd{\href{https://scholar.google.com/citations?user=#1}{\faGraduationCap\acvHeaderIconSep#2}}}
+\newcommand{\googlescholar}[2]{%
+	\ifstrempty{#2}%
+	{\headerAdd{\href{https://scholar.google.com/citations?user=#1}{\faAlt{Google Scholar: #1}{\faGraduationCap}{\protect\@firstname~\protect\@lastname}}}}%
+	{\headerAdd{\href{https://scholar.google.com/citations?user=#1}{\faAlt{Google Scholar: #1}{\faGraduationCap}{#2}}}}%
+}
 
 % Defines writer's extra information (optional)
 % Usage: \extrainfo{<extra information>}
@@ -477,6 +505,13 @@
 
 % Use to draw horizontal line with specific thickness
 \def\vhrulefill#1{\leavevmode\leaders\hrule\@height#1\hfill \kern\z@}
+
+% Icon and label as one unbreakable item; the PDF text layer gets <readable text> instead of the icon glyph
+% Usage: \faAlt{<readable text>}{<icon>}{<label>}
+\DeclareRobustCommand{\faAlt}[3]{\BeginAccSupp{ActualText={#1}}\mbox{#2\acvHeaderIconSep#3}\EndAccSupp{}}
+% Social separator: drawn as \acvHeaderSocialSep, read as a plain space.
+% Robust, so a \renewcommand of \acvHeaderSocialSep applies to socials given before it too.
+\DeclareRobustCommand{\acvSocialSep}{\BeginAccSupp{ActualText={\space}}\acvHeaderSocialSep\EndAccSupp{}}
 
 % Use to execute conditional statements by checking empty string
 \newcommand*{\ifempty}[3]{\ifthenelse{\isempty{#1}}{#2}{#3}}

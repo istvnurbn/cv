@@ -14,14 +14,8 @@
       forAllSystems = nixpkgs.lib.genAttrs systems;
     in
     {
-      devShells = forAllSystems (
-        system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        {
-          default = pkgs.mkShell { buildInputs = [ pkgs.texliveFull ]; };
-        }
-      );
+      devShells = forAllSystems (system: {
+        default = import ./shell.nix { pkgs = nixpkgs.legacyPackages.${system}; };
+      });
     };
 }

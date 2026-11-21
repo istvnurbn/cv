@@ -30,7 +30,6 @@ jobs:
           args: -output-directory=compiled
           extra_system_packages: git
           latexmk_use_xelatex: true
-          continue_on_error: true
           texlive_version: latest
           pre_compile: |
             mkdir -p compiled

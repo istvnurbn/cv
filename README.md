@@ -7,35 +7,35 @@ These are the source files for my resume. It is based on the [Awesome CV Class F
 
 ## Notable Changes
 
-### New
+Compared with the original Awesome CV, this version is tuned for my own resume. In short:
 
-- The order of header socials matches their order in the source file (thanks @rhagenson)
-- Added an option for tagline/summary part in the `\cventry`
-- Added option to change the `\photosize`
-- Added option to create a lists with `\cvsimplelist`
-- Added option to list projects with `\cvproject`
+### What you can do
 
-### Fixes
+- **Write a short intro for each job.** Every entry can have a one-line summary under the title, with or without bullet points below it.
+- **Make simple bullet lists** for things like skills or hobbies, without the full entry layout.
+- **List projects** with a title, a date and a short description.
+- **Pick the photo size** instead of living with the default.
+- **Show your contacts in your own order.** The links in the header appear exactly in the order you write them (thanks @rhagenson).
+- **Link more profiles:** X, WhatsApp and Telegram, next to the usual LinkedIn, GitHub, email and the rest. Google Scholar shows your name when you don't give it a label.
 
-- No more LaTeX compile error when social info is missing
-- The `\cventry` handles all data combinations better
-- Keep all lines of a `\cventry` on the same page
-- No more `\hbox` warnings
-- Wacky solutions to fix the `\hbox` warnings in `\makecvheader`
-- Reworked the `Makefile` to work better with local and GitHub builds
+### Easier to read for people and machines
+
+- Header icons carry real text behind them. Copying your contact line, a screen reader, or an applicant tracking system gets "LinkedIn: /in/yourname" instead of a strange symbol.
+- The phone number shows a phone icon, not a mobile one.
 
 ### Looks
 
-- Switch up `\entrypositionstyle` and `\entrytitlestyle`
-- Thinner lines in section dividers
-- Uniform font sizes
-- Added extra colors from ColorCodes.io
-- Change the mobile icon to a phone
+- Thinner section lines and the same font size across all entries, for a calmer page.
+- Job titles stand out more than company names.
+- More highlight colors to choose from: extra blues, purples, greens and oranges.
 
-### Misc.
+### Fewer surprises
 
-- Added example for all supported social IDs
-- Removed unnecessary empty lines
+- Leaving out a contact detail no longer breaks the build.
+- An entry works with any mix of details filled in or left empty.
+- An entry is never split across two pages.
+- No more layout warnings when building.
+- A broken build stops with an error, both locally and on GitHub, instead of quietly producing an old or missing PDF.
 
 ## Compiling
 

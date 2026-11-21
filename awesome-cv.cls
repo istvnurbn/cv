@@ -510,8 +510,11 @@
 % Usage: \faAlt{<readable text>}{<icon>}{<label>}
 \DeclareRobustCommand{\faAlt}[3]{\BeginAccSupp{ActualText={#1}}\mbox{#2\acvHeaderIconSep#3}\EndAccSupp{}}
 % Social separator: drawn as \acvHeaderSocialSep, read as a plain space.
+% It is the only break point between socials and vanishes at a line break, so no line ends or starts with it.
 % Robust, so a \renewcommand of \acvHeaderSocialSep applies to socials given before it too.
-\DeclareRobustCommand{\acvSocialSep}{\BeginAccSupp{ActualText={\space}}\acvHeaderSocialSep\EndAccSupp{}}
+\DeclareRobustCommand{\acvSocialSep}{%
+	\unskip\discretionary{}{}{\mbox{\BeginAccSupp{ActualText={\space}}\space\acvHeaderSocialSep\EndAccSupp{}}}%
+}
 
 % Use to execute conditional statements by checking empty string
 \newcommand*{\ifempty}[3]{\ifthenelse{\isempty{#1}}{#2}{#3}}
